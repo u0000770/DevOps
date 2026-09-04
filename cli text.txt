@@ -1,0 +1,10 @@
+az group create --name shopping-dev-u0000770-rg --location uksouth
+
+az cosmosdb create --resource-group shopping-dev-u0000770-rg --name shopping-dev-u0000770-cosmos --capabilities EnableServerless --backup-policy-type Periodic --backup-redundancy Local
+
+az cosmosdb sql database create --resource-group shopping-dev-u0000770-rg --account-name shopping-dev-u0000770-cosmos --name catalogue-db
+
+az cosmosdb sql container create --resource-group shopping-dev-u0000770-rg --account-name shopping-dev-u0000770-cosmos --database catalogue-db --name products --partition-key-path "/id"
+
+
+
